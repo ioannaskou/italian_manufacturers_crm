@@ -50,15 +50,20 @@ const ManufacturerProductCategoryPage: React.FC = () => {
     }
   };
 
-  const handleDeleteRelation = async (id: string) => {
-    try {
-      await api.delete(`/manufacturer-product-categories/${id}`);
-      setSuccess('Relationship deleted successfully!');
-      fetchData();
-    } catch (err) {
-      setError('Failed to delete relationship.');
-    }
-  };
+  const handleDeleteRelation = async (manufacturerId: string, productCategoryId: string) => {
+  try {
+    await api.delete(
+      `/manufacturer-product-categories/${manufacturerId}/${productCategoryId}`
+    );
+    setSuccess('Relationship deleted successfully!');
+    setError(null);
+    fetchData();
+  } catch (err) {
+    setError('Failed to delete relationship.');
+    setSuccess(null);
+  }
+};
+
 
   return (
     <main className="container">
@@ -106,7 +111,14 @@ const ManufacturerProductCategoryPage: React.FC = () => {
                   <td>{rel.manufacturer.name}</td>
                   <td>{rel.productCategory.name}</td>
                   <td>
-                    <button className="contrast" onClick={() => handleDeleteRelation(rel._id)}>Delete</button>
+                    <button
+  className="contrast"
+  onClick={() =>
+    handleDeleteRelation(rel.manufacturer._id, rel.productCategory._id)
+  }
+>
+  Delete
+</button>
                   </td>
                 </tr>
               ))
