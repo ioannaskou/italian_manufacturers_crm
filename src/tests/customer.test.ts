@@ -25,7 +25,7 @@ app.use(express.json());
 app.use('/api/customers', customerRoutes);
 
 describe('Customer Tests', () => {
-  
+
   describe('POST /api/customers - Create Customer', () => {
     it('should create a new customer', async () => {
       const newCustomer = {
@@ -56,7 +56,9 @@ describe('Customer Tests', () => {
         .post('/api/customers')
         .send({ address: { city: 'Lyon' } });
 
-      expect(res.status).toBe(500);
+      expect(res.status).toBe(400);
+      // optional but good:
+      expect(res.body).toHaveProperty('message');
     });
   });
 
@@ -78,11 +80,11 @@ describe('Customer Tests', () => {
           name: 'Test Customer',
           email: 'test@test.com',
           phone: '+30 210 1234567',
-          address: { 
-            street: 'Test St', 
-            city: 'Berlin', 
-            postalCode: '12345', 
-            country: 'Germany' 
+          address: {
+            street: 'Test St',
+            city: 'Berlin',
+            postalCode: '12345',
+            country: 'Germany'
           }
         });
 
@@ -112,11 +114,11 @@ describe('Customer Tests', () => {
           name: 'Original Customer',
           email: 'original@test.com',
           phone: '+34 91 1234567',
-          address: { 
-            street: 'Test St', 
-            city: 'Madrid', 
-            postalCode: '28001', 
-            country: 'Spain' 
+          address: {
+            street: 'Test St',
+            city: 'Madrid',
+            postalCode: '28001',
+            country: 'Spain'
           }
         });
 
@@ -129,11 +131,11 @@ describe('Customer Tests', () => {
           name: 'Updated Customer',
           email: 'updated@test.com',
           phone: '+34 93 1234567',
-          address: { 
-            street: 'Updated St', 
-            city: 'Barcelona', 
-            postalCode: '08001', 
-            country: 'Spain' 
+          address: {
+            street: 'Updated St',
+            city: 'Barcelona',
+            postalCode: '08001',
+            country: 'Spain'
           }
         });
 
@@ -152,11 +154,11 @@ describe('Customer Tests', () => {
           name: 'To Delete Customer',
           email: 'delete@test.com',
           phone: '+31 20 1234567',
-          address: { 
-            street: 'Delete St', 
-            city: 'Amsterdam', 
-            postalCode: '1012', 
-            country: 'Netherlands' 
+          address: {
+            street: 'Delete St',
+            city: 'Amsterdam',
+            postalCode: '1012',
+            country: 'Netherlands'
           }
         });
 

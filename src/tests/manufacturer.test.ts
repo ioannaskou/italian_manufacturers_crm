@@ -53,12 +53,13 @@ describe('Manufacturer Tests', () => {
 
     it('should fail without required fields', async () => {
       const res = await request(app)
-        .post('/api/manufacturers')
-        .send({ address: { city: 'Rome' } });
-
-      expect(res.status).toBe(500);
+      .post('/api/manufacturers')
+      .send({ address: { city: 'Rome' }});
+      
+      expect(res.status).toBe(400);
+    
     });
-  });
+
 
   describe('GET /api/manufacturers - Get All Manufacturers', () => {
     it('should return all manufacturers', async () => {
@@ -170,4 +171,4 @@ describe('Manufacturer Tests', () => {
       expect(getRes.status).toBe(404);
     });
   });
-});
+})});

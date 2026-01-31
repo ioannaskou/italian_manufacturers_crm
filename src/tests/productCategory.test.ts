@@ -44,12 +44,15 @@ describe('Product Category Tests', () => {
     });
 
     it('should fail without required name', async () => {
-      const res = await request(app)
-        .post('/api/product-categories')
-        .send({ description: 'No name provided' });
+  const res = await request(app)
+    .post('/api/product-categories')
+    .send({ description: 'No name provided' });
 
-      expect(res.status).toBe(500);
-    });
+  expect(res.status).toBe(400);
+  expect(res.body).toHaveProperty('message', 'Validation error');
+  expect(Array.isArray(res.body.errors)).toBe(true);
+});
+
   });
 
   describe('GET /api/product-categories - Get All Product Categories', () => {
