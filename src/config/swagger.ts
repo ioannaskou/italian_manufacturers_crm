@@ -34,7 +34,7 @@ const options = {
           type: 'object',
           properties: {
             email: { type: 'string', format: 'email' },
-            role: { type: 'string', enum: ['Admin', 'Sales', 'Viewer'] },
+            role: { type: 'string', enum: ['Admin', 'Sales'] },
             firstName: { type: 'string' },
             lastName: { type: 'string' },
             status: { type: 'string', enum: ['active', 'inactive'] }

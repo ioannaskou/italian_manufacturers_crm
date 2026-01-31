@@ -1,6 +1,6 @@
 # Italian Manufacturers CRM
 
-A full-stack CRM system for managing Italian clothing manufacturers and their customer relationships.
+A full-stack Customer Relationship Management system for managing Italian clothing manufacturers and their customer relationships.
 
 Coding Factory 8 - Final Project  
 Athens University of Economics and Business
@@ -9,105 +9,44 @@ Athens University of Economics and Business
 
 ## Project Overview
 
-Full-stack application demonstrating:
+This project demonstrates a complete full-stack application with:
+
 - Domain-Driven Design with 6 domain models
-- Layered architecture
-- REST API with TypeScript
-- React frontend
-- JWT Authentication & Authorization
-- Jest testing (21 tests passing)
-- Swagger documentation
+- Layered architecture (Models, Services, Controllers, Routes)
+- REST API with Express.js and TypeScript
+- React frontend with TypeScript
+- JWT Authentication and Role-Based Authorization
+- Unit and Integration Testing with Jest
+- Swagger API Documentation
+- MongoDB with Mongoose ODM
 
 ---
 
 ## Technology Stack
 
-Backend: Node.js, Express, TypeScript, MongoDB, JWT, Jest  
-Frontend: React 18, TypeScript, React Router, Axios, Pico CSS
+Backend
+- Node.js
+- Express.js
+- TypeScript
+- MongoDB with Mongoose ODM
+- JWT Authentication
+- bcryptjs
+- Swagger
+- Jest and Supertest
+
+Frontend
+- React 18
+- TypeScript
+- React Router v6
+- Axios
+- Pico CSS
 
 ---
 
-## Quick Start
+## Architecture
 
-### Backend (from project root)
+Domain-Driven Design with the following entities:
 
-```bash
-npm install
-# Create .env file (see below)
-node create-admin.js
-npm run dev
-
-### Frontend
-```bash
-cd frontend
-npm install
-npm start
-```
-
-### Environment Variables (.env)
-Create `backend/.env`:
-```
-PORT=3000
-MONGO_URI=mongodb://localhost:27017/italian_manufacturers_crm
-JWT_SECRET=your_super_secret_jwt_key_change_in_production_12345
-NODE_ENV=development
-```
-
-### Default Login
-- Email: `admin@italiancrm.com`
-- Password: `password123`
-
----
-
-## Testing
-
-```bash
-cd src
-npm test
-```
-
-**Results:**
-```
-Test Suites: 3 passed, 3 total
-Tests:       21 passed, 21 total
-```
-
----
-
-##  API Documentation
-
-Swagger UI: `http://localhost:3000/api-docs`
-
-### Main Endpoints
-
-**Auth:**
-- `POST /api/auth/login`
-
-**Manufacturers:**
-- `GET /api/manufacturers`
-- `POST /api/manufacturers` (Admin)
-- `PUT /api/manufacturers/:id` (Admin)
-- `DELETE /api/manufacturers/:id` (Admin)
-
-**Customers:**
-- `GET /api/customers`
-- `POST /api/customers` (Admin, Sales)
-- `PUT /api/customers/:id` (Admin, Sales)
-- `DELETE /api/customers/:id` (Admin, Sales)
-
-**Product Categories:**
-- `GET /api/product-categories`
-- `POST /api/product-categories` (Admin)
-
-**Relationships:**
-- `GET /api/customer-manufacturers`
-- `POST /api/customer-manufacturers`
-
----
-
-##  Architecture
-
-### Domain Models (6 entities)
 1. User
 2. Customer
 3. Manufacturer
@@ -115,73 +54,151 @@ Swagger UI: `http://localhost:3000/api-docs`
 5. CustomerManufacturer
 6. ManufacturerProductCategory
 
-### Layers
-```
-Models → Services → Controllers → Routes
-```
+Layered Architecture:
+
+Models  
+Services  
+Controllers  
+Routes  
+Middlewares  
 
 ---
 
-## User Roles
+## Installation and Setup
 
-- **Admin** - Full access
-- **Sales** - Customer & relationship management
-- **Viewer** - Read-only
+### Prerequisites
 
----
-
-## Project Structure
-
-```
-italian_manufacturers_crm/
-├── src/
-│   ├── models/
-│   ├── services/
-│   ├── controllers/
-│   ├── routes/
-│   ├── middlewares/
-│   ├── tests/
-│   └── server.ts
-├── frontend/
-│   └── ...
-├── postman/
-│   └── Italian Manufacturers CRM.postman_collection.json
-├── create-admin.js
-├── jest.config.cjs
-├── package.json
-├── tsconfig.json
-└── README.md
-
-```
+- Node.js v16 or higher
+- MongoDB v6 or higher
+- npm
 
 ---
 
-## Requirements Checklist
+## Backend Setup
 
-- Domain Model με DDD (6 models)  
-- Model-First Approach  
-- Layered Architecture  
-- REST API με Express + TypeScript  
-- React Frontend με TypeScript  
-- Authentication με JWT  
-- Authorization με Roles  
-- Unit & Integration Tests (Jest)  
-- Swagger API Documentation  
-- Complete README  
-- Postman Collection  
-- .gitignore  
+All commands are executed from the project root directory.
 
----
+Install dependencies:
 
-## Author
+```bash
+npm install
+Create a .env file in the project root:
 
-**Ioanna Skoura**  
-Coding Factory 8  
-Athens University of Economics and Business  
+PORT=3000
+MONGO_URI=mongodb://localhost:27017/italian_manufacturers_crm
+JWT_SECRET=your_super_secret_jwt_key_change_in_production_12345
+NODE_ENV=development
+Create admin user:
+
+node create-admin.js
+Start backend:
+
+npm run dev
+Backend API:
+http://localhost:3000
+
+Swagger:
+http://localhost:3000/api-docs
+
+Frontend Setup
+cd frontend
+npm install
+npm start
+Frontend:
+http://localhost:3001
+
+Default Credentials
+Email: admin@italiancrm.com
+Password: password123
+
+Testing
+From the project root:
+
+npm test
+Results:
+
+Test Suites: 3 passed
+Tests: 21 passed
+
+API Documentation
+Swagger UI:
+http://localhost:3000/api-docs
+
+Main Endpoints
+Authentication
+POST /api/auth/login
+
+Users (Admin only)
+
+GET /api/users
+POST /api/users
+GET /api/users/:id
+PUT /api/users/:id
+DELETE /api/users/:id
+
+Manufacturers
+
+GET /api/manufacturers
+POST /api/manufacturers
+GET /api/manufacturers/:id
+PUT /api/manufacturers/:id
+DELETE /api/manufacturers/:id
+
+Customers
+
+GET /api/customers
+POST /api/customers
+GET /api/customers/:id
+PUT /api/customers/:id
+DELETE /api/customers/:id
+
+Product Categories
+
+GET /api/product-categories
+POST /api/product-categories
+GET /api/product-categories/:id
+PUT /api/product-categories/:id
+DELETE /api/product-categories/:id
+
+Relationships
+
+GET /api/customer-manufacturers
+POST /api/customer-manufacturers
+PUT /api/customer-manufacturers/:id
+DELETE /api/customer-manufacturers/:id
+
+User Roles
+Admin
+
+Full access
+
+User management
+
+Full CRUD access
+
+Sales
+
+Read access to manufacturers
+
+Full customer management
+
+Relationship management
+
+Build and Deployment
+Backend build:
+
+npm run build
+npm start
+Frontend build:
+
+cd frontend
+npm run build
+The production frontend build is created in:
+
+frontend/build
+Author
+Ioanna Skoura
+Coding Factory 8
+Athens University of Economics and Business
 January 2026
 
----
-
-## Support
-
-For issues or questions about this project, please refer to the documentation or contact the instructor.
