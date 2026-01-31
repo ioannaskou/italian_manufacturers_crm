@@ -12,7 +12,7 @@ GITHUB REPOSITORY
 ================================================================
 
 Repository URL:
-(συμπλήρωσε εδώ το πραγματικό σου link στο GitHub)
+https://github.com/ioannaskou/italian_manufacturers_crm
 
 ================================================================
 ΠΕΡΙΛΗΨΗ ΕΡΓΑΣΙΑΣ
@@ -52,7 +52,7 @@ Frontend
 1. Clone repository
 
 git clone <github-repository-url>
-cd italian-manufacturers-crm
+cd italian_manufacturers_crm
 
 2. Backend
 
